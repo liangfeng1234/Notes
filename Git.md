@@ -1,3 +1,5 @@
+# 1. 工程上如何使用git
+
 ## 如果远端github上代码没有发生改变
 
 1.git clone // 到本地
@@ -24,3 +26,28 @@
 2.git pull origin master 再把远端的最新代码拉至本地
 
 ![image-20230325140342906](markdown-img/Git.assets/image-20230325140342906.png)
+
+# 2. git push报错
+
+可以检查是不是代理的问题
+
+```git
+git config --global --get http.proxy
+git config --global --get https.proxy
+```
+
+如果有代理，可以先尝试取消代理
+
+``` git
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+如果提示某个代理有多个值的问题，可以使用以下命令删除所有代理
+
+```
+git config --global --unset-all http.proxy
+git config --global --unset-all https.proxy
+```
+
+再次尝试是否可以push，如果还不行再考虑配置代理
