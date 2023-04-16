@@ -186,3 +186,18 @@ public static String delete(String str){
         }
 ```
 
+## 2023-4-10
+
+括号的最大嵌套深度
+
+```java
+		int n = s.length;
+        int ans = 0;
+        for(int i = 0, cnt = 0; i < n; i++){
+            if(s.charAt(i) == '(') cnt++;
+            else if(s.charAt(i) == ')') cnt--;
+            ans = Math.max(ans, cnt);
+        }
+        return ans;
+```
+
