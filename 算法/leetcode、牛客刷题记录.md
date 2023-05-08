@@ -37,13 +37,13 @@ for (Integer i : set) {
 若需要降序排序
 
 ```java
-		// 自定义Comparator实现TreeSet的降序排序（默认是升序排序）
-        Set<Integer> set = new TreeSet<>(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1 - o2;
-            }
-        });
+// 自定义Comparator实现TreeSet的降序排序（默认是升序排序）
+Set<Integer> set = new TreeSet<>(new Comparator<Integer>() {
+    @Override
+    public int compare(Integer o1, Integer o2) {
+        return o1 - o2;
+    }
+});
 ```
 
 ### 3. 一个字符串包含的不重复字符数
@@ -56,9 +56,9 @@ char[] c = s.toCharArray();
 Set<Character> set = new HashSet<>();
 for (char ch : c) {
     // AISCII码在0-127范围内
-	if(ch >= 0 && ch <= 127 && !set.contains(ch)){
-    set.add(ch);
-	}
+    if(ch >= 0 && ch <= 127 && !set.contains(ch)){
+        set.add(ch);
+    }
 }
 System.out.println(set.size());
 ```
@@ -107,30 +107,30 @@ public static String delete(String str){
 ### 2. 10进制转IP地址和IP地址转10进制
 
 ```java
-	private static final int N = 4;
-    public static String convert(String str){
-        // ipv4 -> int
-        if(str.contains(".")){
-            String[] fields = str.split("\\.");
-            long result = 0;
-            for(int i = 0; i < N; i++){
-                result = result * 256 + Integer.parseInt(fields[i]);
-            }
-            return "" + result;
+private static final int N = 4;
+public static String convert(String str){
+    // ipv4 -> int
+    if(str.contains(".")){
+        String[] fields = str.split("\\.");
+        long result = 0;
+        for(int i = 0; i < N; i++){
+            result = result * 256 + Integer.parseInt(fields[i]);
         }
-        // int -> ipv4
-        else{
-            // ipv4的数值使用Long型数据接受
-            long ipv4 = Long.parseLong(str);
-            String result = "";
-            for(int i = 0; i < N; i++){
-                result = ipv4 % 256 + "." + result;
-                ipv4 /= 256;
-            }
-            // 删除掉最后的"."
-            return result.substring(0, result.length() -1);
-        }
+        return "" + result;
     }
+    // int -> ipv4
+    else{
+        // ipv4的数值使用Long型数据接受
+        long ipv4 = Long.parseLong(str);
+        String result = "";
+        for(int i = 0; i < N; i++){
+            result = ipv4 % 256 + "." + result;
+            ipv4 /= 256;
+        }
+        // 删除掉最后的"."
+        return result.substring(0, result.length() -1);
+    }
+}
 ```
 
 ## 2023-4-6
@@ -138,75 +138,75 @@ public static String delete(String str){
 ### 1. 字符串逆序
 
 ```java
-	while(in.hasNextLine()){
-        String s = in.nextLine();
-        StringBuilder sb = new StringBuilder(s);
-        System.out.println(sb.reverse().toString());
-    }
+while(in.hasNextLine()){
+    String s = in.nextLine();
+    StringBuilder sb = new StringBuilder(s);
+    System.out.println(sb.reverse().toString());
+}
 ```
 
 ### 2. 字符串排序
 
 ```java
-	String[] array = new String[n];
-    for(int i = 0; i < n; i++){
-        array[i] = in.next();
-    }
-    Arrays.sort(array);
+String[] array = new String[n];
+for(int i = 0; i < n; i++){
+    array[i] = in.next();
+}
+Arrays.sort(array);
 ```
 
 ### 3. 合并区间
 
-![image-20230406214018045](markdown-img/leetcode、牛客刷题记录.assets/image-20230406214018045.png)
+![image-20230406214018045](../markdown-img/leetcode、牛客刷题记录.assets/image-20230406214018045.png)
 
 ```java
 // 对intervals升序排序		 
 Collections.sort(intervals, (v1, v2)->v1.start - v2.start);
 ArrayList<Interval> res = new ArrayList<>();
-         int index = -1;
-         for (Interval interval : intervals) {
-             // 对每个interval，如果interval的左边界大于现在的边界的右边界
-             if(index == -1 || interval.start > res.get(index).end){
-                 // 那么将这个interval作为新的边界
-                 res.add(interval);
-                 // index是现在的边界的序号
-                 index++;
-             }else{
-                 // 如果interval的左边界小于等于现在的边界的右边界，那么比较现在的右边界和interval的右边界
-                 // 取最大的右边界作为现在的边界的右边界
-                 res.get(index).end = Math.max(interval.end, res.get(index).end);
-             }
-         }
+int index = -1;
+for (Interval interval : intervals) {
+    // 对每个interval，如果interval的左边界大于现在的边界的右边界
+    if(index == -1 || interval.start > res.get(index).end){
+        // 那么将这个interval作为新的边界
+        res.add(interval);
+        // index是现在的边界的序号
+        index++;
+    }else{
+        // 如果interval的左边界小于等于现在的边界的右边界，那么比较现在的右边界和interval的右边界
+        // 取最大的右边界作为现在的边界的右边界
+        res.get(index).end = Math.max(interval.end, res.get(index).end);
+    }
+}
 ```
 
 ### 4. 成绩排序
 
-![image-20230406221914890](markdown-img/leetcode、牛客刷题记录.assets/image-20230406221914890.png)
+![image-20230406221914890](../markdown-img/leetcode、牛客刷题记录.assets/image-20230406221914890.png)
 
 ```java
-		Scanner in = new Scanner(System.in);
-        HashMap<Integer, String> map = new HashMap<>();
-        while(in.hasNextLine()){
-            int n = in.nextInt();
-            int flag = in.nextInt();
-            int[][] score = new int[n][2];
-            for(int i = 0; i < n; i++){
-                String[] nameAndScore = in.nextLine().split(" ");
-                score[i][0] = i;
-                score[i][1] = Integer.parseInt(nameAndScore[1]);
-                map.put(i,nameAndScore[0]);
-            }
-            Arrays.sort(score,(o1,o2)->{
-                if(flag == 0){
-                    return o2[1] - o1[1];   // 按照第二列降序排列，如果相等返回0，顺序不变
-                }else {
-                    return o1[1] - o2[1];
-                }
-            });
-            for(int i = 0; i < n; i++){
-                System.out.println(map.get(score[i][0]));
-            }
+Scanner in = new Scanner(System.in);
+HashMap<Integer, String> map = new HashMap<>();
+while(in.hasNextLine()){
+    int n = in.nextInt();
+    int flag = in.nextInt();
+    int[][] score = new int[n][2];
+    for(int i = 0; i < n; i++){
+        String[] nameAndScore = in.nextLine().split(" ");
+        score[i][0] = i;
+        score[i][1] = Integer.parseInt(nameAndScore[1]);
+        map.put(i,nameAndScore[0]);
+    }
+    Arrays.sort(score,(o1,o2)->{
+        if(flag == 0){
+            return o2[1] - o1[1];   // 按照第二列降序排列，如果相等返回0，顺序不变
+        }else {
+            return o1[1] - o2[1];
         }
+    });
+    for(int i = 0; i < n; i++){
+        System.out.println(map.get(score[i][0]));
+    }
+}
 ```
 
 ## 2023-4-10
@@ -214,14 +214,14 @@ ArrayList<Interval> res = new ArrayList<>();
 ### 1. 括号的最大嵌套深度
 
 ```java
-		int n = s.length;
-        int ans = 0;
-        for(int i = 0, cnt = 0; i < n; i++){
-            if(s.charAt(i) == '(') cnt++;
-            else if(s.charAt(i) == ')') cnt--;
-            ans = Math.max(ans, cnt);
-        }
-        return ans;
+int n = s.length;
+int ans = 0;
+for(int i = 0, cnt = 0; i < n; i++){
+    if(s.charAt(i) == '(') cnt++;
+    else if(s.charAt(i) == ')') cnt--;
+    ans = Math.max(ans, cnt);
+}
+return ans;
 ```
 
 ## 2023-4-19
@@ -266,39 +266,48 @@ class Solution {
 
 ```java
 class Solution {
-    List<String> list = new ArrayList<>();
-    StringBuilder path = new StringBuilder();
-
+    private List<String> res = new ArrayList<>(); // 动态数组存储排列结果
+    StringBuilder path = new StringBuilder();       // 构建每次排列的字符串
     public String[] permutation(String S) {
         char[] c = S.toCharArray();
-        boolean[] isVisited = new boolean[S.length()];
-        dfs(c,isVisited);
-        String[] res = new String[list.size()];
-        for(int i = 0; i < list.size(); i++){
-            res[i] = list.get(i);
+        Arrays.sort(c);   // 面对有重复元素的排列问题，核心步骤是排序
+        int len = c.length;
+        boolean[] isVisited = new boolean[len]; // 避免重复访问
+        backTracking(c, isVisited);
+        String[] ans = new String[res.size()];
+        for(int i = 0; i < res.size(); i++) {
+            ans[i] = res.get(i);
         }
-        return res;
-
+        return ans;
     }
-    public void dfs(char[] c, boolean[] isVisited) {
+
+    public void backTracking(char[] c, boolean[] isVisited){
         if(path.length() == c.length){
-            list.add(new String(path.toString()));
-            return;
+            res.add(path.toString());
+                return;
+            
         }
         for(int i = 0; i < c.length; i++){
-            if(!isVisited[i]){
-                path.append(c[i]);
-                isVisited[i] = true;
-                dfs(c,isVisited);
-                isVisited[i] = false;
-                path.deleteCharAt(path.length() - 1);
+            // 如果当前节点已经被访问
+            if(isVisited[i]){
+                continue;
             }
+            // 如果当前节点没有被访问，当前节点的值等于上一个节点的值且上一个节点未被访问过
+            if(i > 0 && c[i] == c[i - 1] && !isVisited[i - 1]){
+                // 剪枝，排除重复元素
+                continue;
+            }
+            path.append(c[i]);
+            isVisited[i] = true;
+            backTracking(c, isVisited);
+            isVisited[i] = false;
+            path.deleteCharAt(path.length() - 1);
         }
     }
 }
 ```
 
-## 2023-5-6
+## 2023-5-5
 
 ![image-20230505154933829](markdown-img/leetcode、牛客刷题记录.assets/image-20230505154933829.png)
 
@@ -328,6 +337,32 @@ class Solution {
         }
         return 0;
 
+    }
+}
+```
+
+## 2023-5-6
+
+![image-20230506140557944](markdown-img/leetcode、牛客刷题记录.assets/image-20230506140557944.png)
+
+```java
+class Solution {
+    public int findLengthOfLCIS(int[] nums) {
+        if(nums.length <= 1){
+            return nums.length;
+        }
+        int left = 0;
+        int count = 1;
+        int res = 1;
+        for(int i = 0; i < nums.length - 1; i++){
+            if(nums[i + 1] > nums[i]){
+                count++;
+            }else{
+                count = 1;
+            }
+            res = res > count ? res : count;
+        }
+        return res;
     }
 }
 ```
