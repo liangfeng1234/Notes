@@ -89,7 +89,7 @@ JDK动态代理的实现原理是通过反射机制生成目标类的代理对�
 2. 创建一个InvocationHandler实现类，InvocationHandler是JDK动态代理中的核心接口，它定义了一个invoke方法，用于拦截目标方法的调用。在invoke方法中，我们可以对目标方法进行增强处理，并返回处理结果。
 3. 通过Proxy类的newProxyInstance方法创建代理对象
 
-```
+```java
 public class CustomInvocationHandler implements MyInvocationHandler {
 	// 目标对象的引用
     private ProductService target;
