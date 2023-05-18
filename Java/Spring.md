@@ -28,3 +28,33 @@
 6. `ViewResolver` 会根据逻辑 `View` 查找实际的 `View`。
 7. `DispaterServlet` 把返回的 `Model` 传给 `View`（视图渲染）。
 8. 把 `View` 返回给请求者（浏览器）
+
+# 2 Spring
+
+## 2.1 Spring核心机制：依赖注入
+
+
+
+## 2.2 Spirng核心接口与基本原理
+
+### 2.2.1 BeanFactory
+
+
+
+### 2.2.2 ApplicationContext
+
+
+
+# 3 SpringBoot
+
+## 3.1 SpringBoot项目的构造
+
+- Maven创建
+- Spring Initializr创建
+
+## 3.2 自动配置
+
+
+
+## 3.3 执行流程
+
