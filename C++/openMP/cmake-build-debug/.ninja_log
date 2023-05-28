@@ -1,0 +1,6 @@
+# ninja log v5
+1	795	7029706402697864	build.ninja	dd97ba9a50ea3248
+1	69	7029706404034293	CMakeFiles/openMP.dir/main.c.obj	bbf56cc6bef0dda4
+70	154	7029706404842129	openMP.exe	fe0d9e9f97f71408
+2	114	7029707314393940	CMakeFiles/openMP.dir/main.c.obj	bbf56cc6bef0dda4
+114	203	7029707315268096	openMP.exe	fe0d9e9f97f71408

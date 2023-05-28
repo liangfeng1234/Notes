@@ -68,7 +68,7 @@ parell matrix multiply time: 124.680000
 
 ### windows下编译和运行
 
-我的windows是8核16G，并行计算的速度是线性计算的3倍左右
+win10系统下8核16G，并行计算的速度是线性计算的3倍左右
 
 ```
 Thread_pnum = 8
