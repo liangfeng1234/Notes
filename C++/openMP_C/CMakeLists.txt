@@ -3,7 +3,7 @@ project(openMP C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(openMP main.c openMP.h)
+add_executable(openMP main.c)
 # openMP 配置
 FIND_PACKAGE(OpenMP REQUIRED)
 if (OPENMP_FOUND)
